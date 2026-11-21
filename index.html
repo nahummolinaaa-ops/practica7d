@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control de Almacén</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" />
+  </head>
+  <body>
+<div class="wrap">
+  <header>
+    <h1>Control de almacén</h1>
+    <div class="totals" aria-live="polite">
+      <div class="total"><span class="label">Productos</span><span class="value" id="t-products">0</span></div>
+      <div class="total"><span class="label">Unidades</span><span class="value" id="t-units">0</span></div>
+    </div>
+  </header>
+
+  <p id="note" hidden></p>
+
+  <section class="panel" aria-labelledby="add-title">
+    <form class="add" id="add-form" autocomplete="off">
+      <span class="sr" id="add-title">Agregar producto</span>
+      <div class="field name">
+        <label for="f-name">Producto</label>
+        <input id="f-name" type="text" maxlength="80" required placeholder="Ej. Caja de tornillos 5 mm">
+      </div>
+      <div class="field qty">
+        <label for="f-qty">Cantidad</label>
+        <input id="f-qty" type="number" inputmode="numeric" min="1" step="1" value="1" required>
+      </div>
+      <div class="field unit">
+        <label for="f-unit">Unidad</label>
+        <select id="f-unit">
+          <option>unidades</option>
+          <option>cajas</option>
+          <option>paquetes</option>
+          <option>bolsas</option>
+          <option>kg</option>
+          <option>litros</option>
+        </select>
+      </div>
+      <button type="submit" id="f-submit">Agregar al almacén</button>
+    </form>
+  </section>
+
+  <p id="msg" role="status" aria-live="polite"></p>
+
+  <section class="panel" aria-labelledby="inv-title">
+    <div class="toolbar">
+      <h2 id="inv-title">Inventario</h2>
+      <input id="f-search" type="search" placeholder="Buscar producto" aria-label="Buscar producto">
+    </div>
+    <ul id="list"></ul>
+  </section>
+</div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
